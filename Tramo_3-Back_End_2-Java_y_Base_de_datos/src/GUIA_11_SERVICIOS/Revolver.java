@@ -12,6 +12,7 @@ toString(): muestra información del revolver (posición actual y donde está el
  */
 package GUIA_11_SERVICIOS;
 
+//import static java.lang.Math.random;
 import java.util.Random;
 
 /**
@@ -19,65 +20,55 @@ import java.util.Random;
  * @author Lenovo
  */
 public class Revolver {
-    
-    private int posAct;
-    private int posAgua;
-            
+        // ATRIBUTOS
 
+        private int posAct;
+        private int posAgua;
 
-    public Revolver() {
-    }
+        // CONSTRUCTOR
+        public Revolver() {
+                llenarRevolver();
+        }
 
-    public Revolver(int posAct, int posAgua) {
-        this.posAct = posAct;
-        this.posAgua = posAgua;
-    }
+        public int getPosAct() {
+                return posAct;
+        }
 
-    public int getPosAct() {
-        return posAct;
-    }
+        public void setPosAct(int posAct) {
+                this.posAct = posAct;
+        }
 
-    public void setPosAct(int posAct) {
-        this.posAct = posAct;
-    }
+        public int getPosAgua() {
+                return posAgua;
+        }
 
-    public int getPosAgua() {
-        return posAgua;
-    }
+        public void setPosAgua(int posAgua) {
+                this.posAgua = posAgua;
+        }
 
-    public void setPosAgua(int posAgua) {
-        this.posAgua = posAgua;
-    }
+//        llenarRevolver(): le pone los valores de posición actual y de posición del agua. Los valores
+//        deben ser aleatorios.
+        public void llenarRevolver() {
+                Random rand = new Random(); // Debo hacer ésta declaración para poder usar rand.nextInt(6)
+                posAct = rand.nextInt(6) + 1;
+                posAgua = rand.nextInt(6) + 1;
+}
 
-    //llenarRevolver(): le pone los valores de posición actual y de posición del agua. Los valores deben ser aleatorios.
-    
-    public void llenarRevolver() {
-        
-        Random rand = new Random();
-        posAct = rand.nextInt(6)+1;
-        posAgua = rand.nextInt(6)+1;
-              
+        //mojar(): devuelve true si la posición del agua coincide con la posición actual
+        public boolean mojar() {
+                return posAct == posAgua;
+        }
 
-    }
-    //mojar(): devuelve true si la posición del agua coincide con la posición actual
-    public boolean mojar(){
-        
-        return posAct == posAgua;
-    }
-    
-    //siguienteChorro(): cambia a la siguiente posición del tambor
-    
-    public void siguienteChorro(){
-        posAct ++;
-    }
-    
-    //toString(): muestra información del revolver (posición actual y donde está el agua)
+        //siguienteChorro(): cambia a la siguiente posición del tambor
+        public void siguienteChorro() {
+                posAct = (posAct % 6) + 1; // (posAct mod 6) +1. Ej: (5 mod 6) + 1 = 6 / (6 mod 6) + 1 = 1
+        }
 
-    @Override
-    public String toString() {
-        return "Posicion Actual = " + posAct 
-              + "\nPosicion Agua   = " + posAgua;
-    }
-        
-    
+        //toString(): muestra información del revolver (posición actual y donde está el agua)
+        @Override
+        public String toString() {
+                return "Posicion Actual = " + posAct
+                        + "\nPosicion Agua   = " + posAgua;
+        }
+
 }

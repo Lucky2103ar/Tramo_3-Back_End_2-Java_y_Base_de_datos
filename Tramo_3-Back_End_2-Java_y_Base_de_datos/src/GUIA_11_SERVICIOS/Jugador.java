@@ -16,71 +16,63 @@ package GUIA_11_SERVICIOS;
  *
  * @author Lenovo
  */
-
 public class Jugador {
-    
-   private int id;
-   private String nombre;
-   private boolean mojado;
 
-    public Jugador() {
-    }
+        private int id;
+        private String nombre;
+        private boolean mojado;
 
-    public Jugador(int id) {
-        this.id = id;
-        nombre = "jugador" + id;
-        mojado = false;
-    }
+        public Jugador() {
+        }
 
-    public int getId() {
-        return id;
-    }
+        public Jugador(int id) {
+                this.id = id;
+                nombre = "Jugador " + id;
+                mojado = false;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        public int getId() {
+                return id;
+        }
 
-    public String getNombre() {
-        return nombre;
-    }
+        public void setId(int id) {
+                this.id = id;
+        }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+        public String getNombre() {
+                return nombre;
+        }
 
-    public boolean isMojado() {
-        return mojado;
-    }
+        public void setNombre(String nombre) {
+                this.nombre = nombre;
+        }
 
-    public void setMojado(boolean mojado) {
-        this.mojado = mojado;
-    }
+        public boolean isMojado() {
+                return mojado;
+        }
 
-    @Override
-    public String toString() {
-        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", mojado=" + mojado + '}';
-    }
-    
+        public void setMojado(boolean mojado) {
+                this.mojado = mojado;
+        }
+
+        @Override
+        public String toString() {
+                return "Jugador{" + "id =" + id + ", nombre =" + nombre + ", mojado =" + mojado + '}';
+        }
+
 //Métodos:
 //disparo(Revolver r): el método, recibe el revolver de agua y llama a los métodos de
 //mojar() y siguienteChorro() de Revolver. El jugador se apunta, aprieta el gatillo y si el
 //revolver tira el agua, el jugador se moja. El atributo mojado pasa a false y el método
 //devuelve true, sino false.
-    
-    public boolean disparo(Revolver revolv){
-       if (revolv.mojar()) {
-            System.out.println("Se mojó!!!!");
-            return true;
-        }else{
-            System.out.println("No se mojó");
-            revolv.siguienteChorro();
-            return false;
+        public boolean disparo(Revolver revolver) {
+                if (revolver.mojar()) {
+                         return true;
+                } else {
+                        revolver.siguienteChorro();
+                        return false;
+                }
+
         }
-       
-       
-       
-    }
-    
-    
-    
+
 }
